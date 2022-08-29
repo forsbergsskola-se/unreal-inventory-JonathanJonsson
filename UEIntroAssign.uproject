@@ -45,6 +45,14 @@
 		{
 			"Name": "EnhancedInput",
 			"Enabled": true
+		},
+		{
+			"Name": "MotionWarping",
+			"Enabled": true
+		},
+		{
+			"Name": "MGF_Items",
+			"Enabled": true
 		}
 	]
 }
