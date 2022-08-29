@@ -39,10 +39,6 @@
 			"Enabled": true
 		},
 		{
-			"Name": "MGF_Test",
-			"Enabled": true
-		},
-		{
 			"Name": "EnhancedInput",
 			"Enabled": true
 		},
@@ -52,6 +48,14 @@
 		},
 		{
 			"Name": "MGF_Items",
+			"Enabled": true
+		},
+		{
+			"Name": "MGF_Test",
+			"Enabled": true
+		},
+		{
+			"Name": "AwesomeMGF",
 			"Enabled": true
 		}
 	]

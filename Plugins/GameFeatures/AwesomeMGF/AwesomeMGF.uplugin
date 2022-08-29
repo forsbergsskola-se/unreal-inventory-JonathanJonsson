@@ -2,7 +2,7 @@
 	"FileVersion": 3,
 	"Version": 1,
 	"VersionName": "1.0",
-	"FriendlyName": "MGF_Test",
+	"FriendlyName": "AwesomeMGF",
 	"Description": "",
 	"Category": "Game Features",
 	"CreatedBy": "",
@@ -16,5 +16,5 @@
 	"IsExperimentalVersion": false,
 	"Installed": false,
 	"ExplicitlyLoaded": true,
-	"BuiltInInitialFeatureState": "Installed"
+	"BuiltInInitialFeatureState": "Active"
 }
