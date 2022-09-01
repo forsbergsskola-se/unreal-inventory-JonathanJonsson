@@ -53,10 +53,6 @@
 		{
 			"Name": "MGF_Test",
 			"Enabled": true
-		},
-		{
-			"Name": "AwesomeMGF",
-			"Enabled": true
 		}
 	]
 }
