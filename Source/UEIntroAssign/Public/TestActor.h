@@ -8,7 +8,7 @@
 #include "TestActor.generated.h"
 
 UCLASS()
-class UEINTROASSIGN_API ATestActor : public AActor
+class UEINTROASSIGN_API ATestActor : public AAIController
 {
 	GENERATED_BODY()
 	
