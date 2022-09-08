@@ -4,7 +4,7 @@
 #include "TestActor.h"
  
 
-void ATestActor::DrawDiamond(FVector Location, float Radius, int Segments, FColor Color)
+void ATestActor::DrawDiamondAtTargetLocation(FVector Location, float Radius, int Segments, FColor Color)
 {
 	DrawDebugSphere(GetWorld(), Location,Radius,Segments, Color,true);
 

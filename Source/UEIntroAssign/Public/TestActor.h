@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AIController.h"
 #include "GameFramework/Actor.h"
 #include "TestActor.generated.h"
 
@@ -14,7 +15,7 @@ class UEINTROASSIGN_API ATestActor : public AActor
 public:
 
 	UFUNCTION(BlueprintCallable, Category="GP_21_JonathanJonsson")
-	void DrawDiamond(FVector Location, float Radius, int Segments,FColor Color );
+	void DrawDiamondAtTargetLocation(FVector Location, float Radius, int Segments,FColor Color );
 	// Sets default values for this actor's properties
 	ATestActor();
 
