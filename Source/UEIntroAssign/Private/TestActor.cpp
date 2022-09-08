@@ -4,11 +4,23 @@
 #include "TestActor.h"
  
 
-void ATestActor::DrawDiamondAtTargetLocation(FVector Location, float Radius, int Segments, FColor Color)
+void ATestActor::DrawDiamondAtTargetDestination(float Radius, FLinearColor Color, float LifeTime, float Thickness)
 {
-	DrawDebugSphere(GetWorld(), Location,Radius,Segments, Color,true);
+	FVector PathDestination = GetPathFollowingComponent() -> GetCurrentTargetLocation();
+	FNavPathSharedPtr Path = GetPathFollowingComponent()->GetPath();
+	if(!Path)
+		return;
+
+	TArray<FNavPathPoint> PathPoints = Path->GetPathPoints();
+
+	for (FNavPathPoint point : PathPoints)
+	{
+		DrawDebugSphere(GetWorld(), point,Radius,4, Color.ToFColorSRGB(),false, LifeTime, 0, Thickness);
+	}
+
 
 }
+ 
 
 // Sets default values
 ATestActor::ATestActor()
