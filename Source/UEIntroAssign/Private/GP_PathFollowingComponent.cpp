@@ -3,6 +3,10 @@
 
 #include "GP_PathFollowingComponent.h"
 
+#include "AIController.h"
+#include "NavigationSystem.h"
+#include "AI/NavigationSystemBase.h"
+
 
 // Sets default values for this component's properties
 UGP_PathFollowingComponent::UGP_PathFollowingComponent()
@@ -47,5 +51,29 @@ void UGP_PathFollowingComponent::DrawDiamondAtTargetDestination(float Radius, FL
 		DrawDebugSphere(GetWorld(), point,Radius,4, Color.ToFColorSRGB(),false, Time, 0, Thickness);
 	}
 }
+
+bool UGP_PathFollowingComponent::IsLocationReachable(FVector EndDestination)
+{
+	UNavigationSystemV1* NavSystem = FNavigationSystem::GetCurrent<UNavigationSystemV1>(GetWorld());
+
+	APawn* EnemyPawn = Cast<AAIController>(GetOwner())->GetPawn();
+	
+	
+	FPathFindingQuery Query{GetOwner(), *MyNavData, EnemyPawn->GetActorLocation(), EndDestination};
+	
+	return NavSystem->TestPathSync(Query);
+	
+}
+
+TArray<AActor*> UGP_PathFollowingComponent::OrderByDistance(AActor* OwnerActor, TArray<AActor*> InputArray)
+{
+	InputArray.Sort([OwnerActor](AActor& A,AActor& B)
+	{
+		float DistanceA = A.GetDistanceTo(OwnerActor);
+		float DistanceB = B.GetDistanceTo(OwnerActor);
+		return DistanceA > DistanceB;
+	});
+	return InputArray;
+}	
  
 

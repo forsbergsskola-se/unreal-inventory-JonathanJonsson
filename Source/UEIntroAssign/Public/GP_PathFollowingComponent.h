@@ -42,6 +42,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category="GP21")
 	void DrawDiamondAtTargetDestination(float Radius, FLinearColor Color, float Time, float Thickness);
 
+	UFUNCTION(BlueprintCallable,BlueprintPure, Category="GP21")
+	bool IsLocationReachable(FVector EndDestination);
+
+	UFUNCTION(BlueprintCallable, Category="GP21")
+	static TArray<AActor*> OrderByDistance(AActor* OwnerActor, TArray<AActor*> InputArray);
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
