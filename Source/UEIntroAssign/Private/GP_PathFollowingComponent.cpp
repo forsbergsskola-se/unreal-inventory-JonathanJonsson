@@ -65,15 +65,15 @@ bool UGP_PathFollowingComponent::IsLocationReachable(FVector EndDestination)
 	
 }
 
-TArray<AActor*> UGP_PathFollowingComponent::OrderByDistance(AActor* OwnerActor, TArray<AActor*> InputArray)
-{
-	InputArray.Sort([OwnerActor](AActor& A,AActor& B)
-	{
-		float DistanceA = A.GetDistanceTo(OwnerActor);
-		float DistanceB = B.GetDistanceTo(OwnerActor);
-		return DistanceA > DistanceB;
-	});
-	return InputArray;
-}	
+// TArray<AActor*> UGP_PathFollowingComponent::OrderByDistance(AActor* OwnerActor, TArray<AActor*> InputArray)
+// {
+// 	InputArray.Sort([OwnerActor](AActor& A,AActor& B)
+// 	{
+// 		float DistanceA = A.GetDistanceTo(OwnerActor);
+// 		float DistanceB = B.GetDistanceTo(OwnerActor);
+// 		return DistanceA > DistanceB;
+// 	});
+// 	return InputArray;
+// }	
  
 

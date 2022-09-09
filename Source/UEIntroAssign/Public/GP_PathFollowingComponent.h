@@ -45,8 +45,8 @@ public:
 	UFUNCTION(BlueprintCallable,BlueprintPure, Category="GP21")
 	bool IsLocationReachable(FVector EndDestination);
 
-	UFUNCTION(BlueprintCallable, Category="GP21")
-	static TArray<AActor*> OrderByDistance(AActor* OwnerActor, TArray<AActor*> InputArray);
+	// UFUNCTION(BlueprintCallable, Category="GP21")
+	// static TArray<AActor*> OrderByDistance(AActor* OwnerActor, TArray<AActor*> InputArray);
 
 protected:
 	// Called when the game starts
