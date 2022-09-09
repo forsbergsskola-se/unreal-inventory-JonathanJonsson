@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
-#include "GameFramework/Actor.h"
 #include "TestActor.generated.h"
 
 UCLASS()
@@ -13,11 +12,9 @@ class UEINTROASSIGN_API ATestActor : public AAIController
 	GENERATED_BODY()
 	
 public:
-	
-	UFUNCTION(BlueprintCallable, Category="GP_21_JonathanJonsson")
-	void DrawDiamondAtTargetDestination(float Radius, FLinearColor Color, float LifeTime, float Thickness);
 	// Sets default values for this actor's properties
 	ATestActor();
+	ATestActor(const FObjectInitializer& ObjectInitializer);
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

@@ -2,25 +2,9 @@
 
 
 #include "TestActor.h"
- 
 
-void ATestActor::DrawDiamondAtTargetDestination(float Radius, FLinearColor Color, float LifeTime, float Thickness)
-{
-	FVector PathDestination = GetPathFollowingComponent() -> GetCurrentTargetLocation();
-	FNavPathSharedPtr Path = GetPathFollowingComponent()->GetPath();
-	if(!Path)
-		return;
+#include "GP_PathFollowingComponent.h"
 
-	TArray<FNavPathPoint> PathPoints = Path->GetPathPoints();
-
-	for (FNavPathPoint point : PathPoints)
-	{
-		DrawDebugSphere(GetWorld(), point,Radius,4, Color.ToFColorSRGB(),false, LifeTime, 0, Thickness);
-	}
-
-
-}
- 
 
 // Sets default values
 ATestActor::ATestActor()
@@ -29,6 +13,12 @@ ATestActor::ATestActor()
 	PrimaryActorTick.bCanEverTick = true;
 
 }
+
+ATestActor::ATestActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer.SetDefaultSubobjectClass<UGP_PathFollowingComponent>(TEXT("PathFollowingComponent")))
+{
+	
+}
+
 
 // Called when the game starts or when spawned
 void ATestActor::BeginPlay()
