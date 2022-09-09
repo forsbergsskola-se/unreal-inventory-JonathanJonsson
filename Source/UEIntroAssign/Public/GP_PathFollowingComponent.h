@@ -13,6 +13,20 @@ class UEINTROASSIGN_API UGP_PathFollowingComponent : public UPathFollowingCompon
 	GENERATED_BODY()
 
 public:
+	/**
+	 *Toggles path when doing navigation
+	 */
+	UPROPERTY(EditDefaultsOnly, Category="Debug")
+	bool DebugPath;
+
+	/*
+	 *Color of debug diamonds
+	 */
+	UPROPERTY(EditDefaultsOnly, Category="Debug")
+	FLinearColor DebugColor;
+
+
+	
 	// Sets default values for this component's properties
 	UGP_PathFollowingComponent();
 	// Called every frame

@@ -30,8 +30,9 @@ void UGP_PathFollowingComponent::TickComponent(float DeltaTime, ELevelTick TickT
                                                FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-	FLinearColor Color = FLinearColor{0, 255, 15, 1};
-	DrawDiamondAtTargetDestination(20,Color,0.1f,3);
+
+	if(DebugPath)
+ 		DrawDiamondAtTargetDestination(20,DebugColor,0.1f,3);
 }
 
 void UGP_PathFollowingComponent::DrawDiamondAtTargetDestination(float Radius, FLinearColor Color, float LifeTime, float Thickness)
