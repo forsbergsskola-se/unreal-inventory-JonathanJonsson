@@ -33,8 +33,14 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 							   FActorComponentTickFunction* ThisTickFunction) override;
 
+	/**
+	 *@param Radius Radius of diamond
+	 *@param Color Color of diamond
+	 *@param Time Time for spawn diamond
+	 *@param Thickness Thickness of diamond lines
+	 */
 	UFUNCTION(BlueprintCallable, Category="GP21")
-	void DrawDiamondAtTargetDestination(float Radius, FLinearColor Color, float LifeTime, float Thickness);
+	void DrawDiamondAtTargetDestination(float Radius, FLinearColor Color, float Time, float Thickness);
 
 protected:
 	// Called when the game starts

@@ -35,7 +35,7 @@ void UGP_PathFollowingComponent::TickComponent(float DeltaTime, ELevelTick TickT
  		DrawDiamondAtTargetDestination(20,DebugColor,0.1f,3);
 }
 
-void UGP_PathFollowingComponent::DrawDiamondAtTargetDestination(float Radius, FLinearColor Color, float LifeTime, float Thickness)
+void UGP_PathFollowingComponent::DrawDiamondAtTargetDestination(float Radius, FLinearColor Color, float Time, float Thickness)
 {
 	if(!Path)
 		return;
@@ -44,7 +44,7 @@ void UGP_PathFollowingComponent::DrawDiamondAtTargetDestination(float Radius, FL
 
 	for (FNavPathPoint point : PathPoints)
 	{
-		DrawDebugSphere(GetWorld(), point,Radius,4, Color.ToFColorSRGB(),false, LifeTime, 0, Thickness);
+		DrawDebugSphere(GetWorld(), point,Radius,4, Color.ToFColorSRGB(),false, Time, 0, Thickness);
 	}
 }
  
