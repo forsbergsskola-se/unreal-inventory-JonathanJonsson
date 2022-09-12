@@ -53,6 +53,14 @@
 		{
 			"Name": "MGF_Test",
 			"Enabled": true
+		},
+		{
+			"Name": "InventoryTemp",
+			"Enabled": false
+		},
+		{
+			"Name": "InvTemp",
+			"Enabled": false
 		}
 	]
 }
