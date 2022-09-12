@@ -14,7 +14,7 @@ class INVENTORYSYSTEM_API UInventoryBase : public UActorComponent
 {
 	GENERATED_BODY()
 
-FItemBase ItemBase;
+FItemStruct ItemBase;
 
 public:
 	// Sets default values for this component's properties
