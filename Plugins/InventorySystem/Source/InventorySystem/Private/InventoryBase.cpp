@@ -13,7 +13,18 @@ UInventoryBase::UInventoryBase()
 
 	// ...
 }
- 
+
+TArray<FItemStruct>& UInventoryBase::GetItems()
+{
+	return Items;	
+}
+
+bool UInventoryBase::AddItemNew(const FItemStruct& NewItem)
+{
+	Items.Add(NewItem);
+	return true;
+}
+
 
 // Called when the game starts
 void UInventoryBase::BeginPlay()
