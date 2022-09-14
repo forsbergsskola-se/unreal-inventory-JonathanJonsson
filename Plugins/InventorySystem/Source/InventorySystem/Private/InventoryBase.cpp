@@ -23,13 +23,25 @@ bool UInventoryBase::AddItemNew(const FItemStruct& NewItem)
 {
 	// if(!NewItem.ItemPDA)
 	// 	return false;
-	
 	Items.Add(NewItem);
+	OnInventoryChanged.Broadcast(NewItem);
+
 	return true;
 }
 
+bool UInventoryBase::RemoveItem(const FItemStruct& Item)
+{
+	if(Items.Remove(Item) > 0)
+	{
+		OnInventoryChanged.Broadcast(Item);
+		return true;
+	}
+	PRINT(10, "OH NO");
+	return false;
+}
 
-FItemStruct UInventoryBase::CreateItem(FItemStruct Item)
+
+FItemStruct UInventoryBase::CreateItem(const FItemStruct& Item)
 {
 	if(Item.ItemPDA)
 		return FItemStruct{Item.ItemPDA};
