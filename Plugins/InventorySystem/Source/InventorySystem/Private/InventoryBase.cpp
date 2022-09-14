@@ -40,7 +40,17 @@ void UInventoryBase::BeginPlay()
 void UInventoryBase::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+	
+	if(bDebug)
+		Debug();
 
-	// ...
+}
+
+void UInventoryBase::Debug()
+{
+	for(const FItemStruct ItemIndex : GetItems())
+	{
+		PRINT(0,ItemIndex.ItemPDA->ItemName.ToString());
+	}
 }
 

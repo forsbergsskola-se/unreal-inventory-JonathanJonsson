@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "InventoryStructs.h"
 #include "Engine/StaticMeshActor.h"
 #include "ItemBase.generated.h"
 
@@ -14,6 +15,7 @@ class INVENTORYSYSTEM_API AItemBase : public AStaticMeshActor
 public:
 	// Sets default values for this actor's properties
 	AItemBase();
+	
 
 protected:
 	// Called when the game starts or when spawned
@@ -22,4 +24,6 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(ExposeOnSpawn=true))
+	FItemStruct Item;
 };
