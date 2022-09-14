@@ -26,6 +26,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	bool AddItemNew(const FItemStruct& NewItem);
 
+	FItemStruct CreateItem(FItemStruct Item);
+
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 							   FActorComponentTickFunction* ThisTickFunction) override;

@@ -10,10 +10,16 @@ struct FItemStruct
  {
   GENERATED_BODY();
 
- // FItemStruct(UItemPDABase* ItemPdaBase, float Durability) : ItemPDA(ItemPdaBase), Durability(Durability)
- // {
- //  ItemPDA = ItemPdaBase;
- // }
+
+ FItemStruct(UItemPDABase* ItemPda) : ItemPDA(ItemPda) , Durability(100)
+ {
+  
+ }
+ 
+ FItemStruct(UItemPDABase* ItemPda, float Durability) : ItemPDA(ItemPda) , Durability(Durability)
+ {
+  
+ }
  
   UPROPERTY(BlueprintReadWrite, EditAnywhere)
   UItemPDABase* ItemPDA;

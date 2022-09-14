@@ -21,8 +21,20 @@ TArray<FItemStruct>& UInventoryBase::GetItems()
 
 bool UInventoryBase::AddItemNew(const FItemStruct& NewItem)
 {
+	// if(!NewItem.ItemPDA)
+	// 	return false;
+	
 	Items.Add(NewItem);
 	return true;
+}
+
+
+FItemStruct UInventoryBase::CreateItem(FItemStruct Item)
+{
+	if(Item.ItemPDA)
+		return FItemStruct{Item.ItemPDA};
+
+	return FItemStruct(nullptr);
 }
 
 
