@@ -34,5 +34,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Basic")
 	bool Use(const APawn* Pawn, bool Success);
+
+	
 	
 };

@@ -10,7 +10,7 @@ struct FItemStruct
  {
   GENERATED_BODY();
 
-FItemStruct() : ItemPDA(nullptr), Durability(0)
+FItemStruct() : ItemPDA(nullptr), Durability(0), Id(FGuid::NewGuid())
  {}
  
  FItemStruct(UItemPDABase* ItemPda) : ItemPDA(ItemPda) , Durability(100), Id(FGuid::NewGuid())
@@ -22,6 +22,7 @@ FItemStruct() : ItemPDA(nullptr), Durability(0)
  {
   
  }
+
  
   UPROPERTY(BlueprintReadWrite, EditAnywhere)
   UItemPDABase* ItemPDA;
@@ -39,6 +40,6 @@ FItemStruct() : ItemPDA(nullptr), Durability(0)
  {
   return this->Id == Other.Id;
  }
- 
+  
 
  };

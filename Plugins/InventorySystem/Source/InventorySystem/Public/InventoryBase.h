@@ -16,8 +16,6 @@ class INVENTORYSYSTEM_API UInventoryBase : public UActorComponent
 {
 	GENERATED_BODY()
 
-// FItemStruct ItemBase;
-
 public:
 	// Sets default values for this component's properties
 	UInventoryBase();
@@ -25,8 +23,14 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category="GP_JJ")
 	TArray<FItemStruct>& GetItems();
 
+
+	//For adding NEW item to inventory (as in not in a stack)
 	UFUNCTION(BlueprintCallable, Category="GP_JJ")
 	bool AddItemNew(const FItemStruct& NewItem);
+
+	//Adding an item (might be new OR to a stack)
+	UFUNCTION(BlueprintCallable, Category="GP_JJ")
+	bool AddItemzz(UPARAM(ref) FItemStruct& Item);
 
 	UFUNCTION(BlueprintCallable, Category="GP_JJ")
 	bool RemoveItem(const FItemStruct& Item);
@@ -45,11 +49,9 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
-	
 
 private:
 	TArray<FItemStruct> Items;
 
 	void Debug();
-	
 };

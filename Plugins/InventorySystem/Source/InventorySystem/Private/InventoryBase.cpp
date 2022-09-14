@@ -18,6 +18,7 @@ TArray<FItemStruct>& UInventoryBase::GetItems()
 {
 	return Items;	
 }
+ 
 
 bool UInventoryBase::AddItemNew(const FItemStruct& NewItem)
 {
@@ -29,14 +30,31 @@ bool UInventoryBase::AddItemNew(const FItemStruct& NewItem)
 	return true;
 }
 
+bool UInventoryBase::AddItemzz(UPARAM(ref) FItemStruct& Item)
+{
+	for(FItemStruct ItemIndex : GetItems())
+	{
+
+		if(ItemIndex == Item)
+		{
+			Item.Amount+=1;
+			return true;
+		}
+	}
+	
+	AddItemNew(Item);
+	return true;
+}
+
 bool UInventoryBase::RemoveItem(const FItemStruct& Item)
 {
+
 	if(Items.Remove(Item) > 0)
 	{
 		OnInventoryChanged.Broadcast(Item);
 		return true;
 	}
-	PRINT(10, "OH NO");
+
 	return false;
 }
 
@@ -54,7 +72,7 @@ FItemStruct UInventoryBase::CreateItem(const FItemStruct& Item)
 void UInventoryBase::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	// ...
 	
 }

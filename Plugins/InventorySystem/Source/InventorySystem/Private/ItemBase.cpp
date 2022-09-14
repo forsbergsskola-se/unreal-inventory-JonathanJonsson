@@ -24,3 +24,10 @@ void AItemBase::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
+void AItemBase::GenerateID()
+{
+	Item.Id.NewGuid();
+	GEngine->AddOnScreenDebugMessage(-1,5,FColor::Silver,Item.Id.ToString()); 
+}
+ 
+
