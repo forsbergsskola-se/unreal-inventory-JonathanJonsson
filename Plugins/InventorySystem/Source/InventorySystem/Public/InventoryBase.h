@@ -36,6 +36,9 @@ public:
 	bool RemoveItem(const FItemStruct& Item);
 
 	UFUNCTION(BlueprintCallable, Category="GP_JJ")
+	bool TransferItem(UInventoryBase* TargetInventory, const FItemStruct& Item);
+	
+	UFUNCTION(BlueprintCallable, Category="GP_JJ")
 	FItemStruct CreateItem(const FItemStruct& Item);
 
 	// Called every frame

@@ -32,8 +32,8 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Basic")
 	bool Stackable;
 
-	UFUNCTION(BlueprintCallable, Category="Basic")
-	bool Use(const APawn* Pawn, bool Success);
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable, Category="Basic")
+	bool Use(const APawn* Pawn);
 
 	
 	

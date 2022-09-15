@@ -24,10 +24,13 @@ void AItemBase::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-void AItemBase::GenerateID()
+void AItemBase::OnConstruction(const FTransform& Transform)
 {
-	Item.Id.NewGuid();
-	GEngine->AddOnScreenDebugMessage(-1,5,FColor::Silver,Item.Id.ToString()); 
+	Super::OnConstruction(Transform);
+	
+	if(GetWorld()->WorldType == EWorldType::Editor)
+		Item.Id = FGuid::NewGuid();
 }
+ 
  
 

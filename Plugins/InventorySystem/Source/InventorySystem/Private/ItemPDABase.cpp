@@ -4,8 +4,8 @@
 #include "ItemPDABase.h"
 
 
-bool UItemPDABase::Use(const APawn* Pawn, bool Success)
+bool UItemPDABase::Use_Implementation(const APawn* Pawn)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 2,FColor::Orange,"Used"+ItemName.ToString());
-	return true;
+	//default implementation
+	return false;
 }

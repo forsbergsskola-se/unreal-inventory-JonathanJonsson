@@ -16,14 +16,13 @@ UInventoryBase::UInventoryBase()
 
 TArray<FItemStruct>& UInventoryBase::GetItems()
 {
-	return Items;	
+	return Items;
 }
  
 
 bool UInventoryBase::AddItemNew(const FItemStruct& NewItem)
 {
-	// if(!NewItem.ItemPDA)
-	// 	return false;
+
 	Items.Add(NewItem);
 	OnInventoryChanged.Broadcast(NewItem);
 
@@ -55,6 +54,15 @@ bool UInventoryBase::RemoveItem(const FItemStruct& Item)
 		return true;
 	}
 
+	return false;
+}
+
+bool UInventoryBase::TransferItem(UInventoryBase* TargetInventory, const FItemStruct& Item)
+{
+	if(TargetInventory->AddItemNew(Item))
+	{
+		return RemoveItem(Item);
+	}
 	return false;
 }
 

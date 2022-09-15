@@ -33,12 +33,13 @@ FItemStruct() : ItemPDA(nullptr), Durability(0), Id(FGuid::NewGuid())
  UPROPERTY(BlueprintReadWrite)
  int Amount;
 
+ UPROPERTY(VisibleAnywhere)
  FGuid Id;
  
  
  bool operator ==(const FItemStruct& Other) const
  {
-  return this->Id == Other.Id;
+  return this->Id == Other.Id && ItemPDA;
  }
   
 

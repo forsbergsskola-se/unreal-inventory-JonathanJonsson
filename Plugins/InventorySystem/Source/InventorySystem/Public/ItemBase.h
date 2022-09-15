@@ -27,6 +27,5 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(ExposeOnSpawn=true))
 	FItemStruct Item;
 
-	UFUNCTION(BlueprintCallable)
-void GenerateID();
+	virtual void OnConstruction(const FTransform& Transform) override;
 };
