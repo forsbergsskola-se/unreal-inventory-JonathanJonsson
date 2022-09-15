@@ -30,7 +30,7 @@ public:
 
 	//Adding an item (might be new OR to a stack)
 	UFUNCTION(BlueprintCallable, Category="GP_JJ")
-	bool AddItemzz(UPARAM(ref) FItemStruct& Item);
+	bool AddItem(UPARAM(ref) FItemStruct& Item);
 
 	UFUNCTION(BlueprintCallable, Category="GP_JJ")
 	bool RemoveItem(const FItemStruct& Item);

@@ -34,7 +34,5 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable, Category="Basic")
 	bool Use(const APawn* Pawn);
-
-	
 	
 };

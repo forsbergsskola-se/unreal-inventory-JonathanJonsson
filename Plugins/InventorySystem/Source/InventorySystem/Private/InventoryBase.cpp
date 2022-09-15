@@ -3,6 +3,8 @@
 
 #include "InventoryBase.h"
 
+#include <string>
+
 
 // Sets default values for this component's properties
 UInventoryBase::UInventoryBase()
@@ -29,14 +31,14 @@ bool UInventoryBase::AddItemNew(const FItemStruct& NewItem)
 	return true;
 }
 
-bool UInventoryBase::AddItemzz(UPARAM(ref) FItemStruct& Item)
+bool UInventoryBase::AddItem(UPARAM(ref) FItemStruct& Item)
 {
-	for(FItemStruct ItemIndex : GetItems())
+	for(const FItemStruct ItemIndex : GetItems())
 	{
 
 		if(ItemIndex == Item)
 		{
-			Item.Amount+=1;
+			Item.Amount += 1;
 			return true;
 		}
 	}
