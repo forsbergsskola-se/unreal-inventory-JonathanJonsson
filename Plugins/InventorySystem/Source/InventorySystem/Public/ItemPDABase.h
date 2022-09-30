@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayTagContainer.h"
 #include "ItemPDABase.generated.h"
 
 /**
@@ -32,7 +33,12 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Basic")
 	bool Stackable;
 
+	UPROPERTY(BlueprintReadOnly,EditDefaultsOnly, Category="Basic")
+	FGameplayTagContainer Tags;
+
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable, Category="Basic")
 	bool Use(const APawn* Pawn);
+
+
 	
 };

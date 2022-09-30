@@ -24,11 +24,14 @@ TArray<FItemStruct>& UInventoryBase::GetItems()
 
 bool UInventoryBase::AddItemNew(const FItemStruct& NewItem)
 {
+	if(NewItem.IsValid())
+	{
+		Items.Add(NewItem);
+		OnInventoryChanged.Broadcast(NewItem);
+		return true;
+	}
 
-	Items.Add(NewItem);
-	OnInventoryChanged.Broadcast(NewItem);
-
-	return true;
+	return false;
 }
 
 bool UInventoryBase::AddItem(UPARAM(ref) FItemStruct& Item)
@@ -36,9 +39,10 @@ bool UInventoryBase::AddItem(UPARAM(ref) FItemStruct& Item)
 	for(const FItemStruct ItemIndex : GetItems())
 	{
 
-		if(ItemIndex == Item)
+		if(ItemIndex.ItemPDA == Item.ItemPDA && Item.ItemPDA->Stackable)
 		{
 			Item.Amount += 1;
+			OnInventoryChanged.Broadcast(Item);
 			return true;
 		}
 	}
@@ -102,7 +106,8 @@ void UInventoryBase::Debug()
 {
 	for(const FItemStruct ItemIndex : GetItems())
 	{
-		PRINT(0,ItemIndex.ItemPDA->ItemName.ToString());
+		FString string = FString::Printf(TEXT("Item name: %s"), *ItemIndex.ItemPDA->ItemName.ToString());
+		PRINT(0,string);
 	}
 }
 

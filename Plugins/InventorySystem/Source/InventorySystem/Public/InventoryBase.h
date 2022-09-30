@@ -7,7 +7,7 @@
 #include "InventoryStructs.h"
 #include "InventoryBase.generated.h"
 
-#define PRINT(Time, String) GEngine->AddOnScreenDebugMessage(-1,Time,FColor::Orange, String);
+#define PRINT(Time, String, Color) GEngine->AddOnScreenDebugMessage(-1,Time,FColor::Orange, String);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnInventoryChangedSignature, FItemStruct, Item);
 

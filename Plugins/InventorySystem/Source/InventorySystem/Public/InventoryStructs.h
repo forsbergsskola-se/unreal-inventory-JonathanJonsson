@@ -22,7 +22,6 @@ FItemStruct() : ItemPDA(nullptr), Durability(0), Id(FGuid::NewGuid())
  {
   
  }
-
  
   UPROPERTY(BlueprintReadWrite, EditAnywhere)
   UItemPDABase* ItemPDA;
@@ -41,5 +40,7 @@ FItemStruct() : ItemPDA(nullptr), Durability(0), Id(FGuid::NewGuid())
  {
   return this->Id == Other.Id && ItemPDA;
  }
+
+ bool IsValid() const;
   
  };

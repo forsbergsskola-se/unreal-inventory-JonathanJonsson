@@ -47,10 +47,6 @@
 			"Enabled": true
 		},
 		{
-			"Name": "MGF_Items",
-			"Enabled": true
-		},
-		{
 			"Name": "MGF_Test",
 			"Enabled": true
 		},

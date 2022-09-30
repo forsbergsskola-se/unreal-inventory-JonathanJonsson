@@ -4,6 +4,11 @@
 #include "ItemBase.h"
 
 
+void AItemBase::GetOwnedGameplayTags(FGameplayTagContainer& TagContainer) const
+{
+	TagContainer = OwnedGPTS;
+}
+
 // Sets default values
 AItemBase::AItemBase()
 {
@@ -16,6 +21,11 @@ void AItemBase::BeginPlay()
 {
 	Super::BeginPlay();
 	
+}
+
+void AItemBase::SetOwnedGPT(const FGameplayTagContainer& NewContainer)
+{
+	OwnedGPTS = NewContainer;
 }
 
 // Called every frame
