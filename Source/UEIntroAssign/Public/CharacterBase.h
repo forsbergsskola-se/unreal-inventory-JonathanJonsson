@@ -28,6 +28,4 @@ public:
 
 	UFUNCTION(Server, Reliable, BlueprintCallable)
 	void ServerInteractCPP(AActor* HitActor, ACharacter* Interactor);
-
-	
 };

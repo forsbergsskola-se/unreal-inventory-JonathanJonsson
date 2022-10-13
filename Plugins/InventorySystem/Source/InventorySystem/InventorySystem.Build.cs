@@ -25,7 +25,7 @@ public class InventorySystem : ModuleRules
 		PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
-				"Core", "GameplayTags",
+				"Core", 
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
@@ -38,6 +38,7 @@ public class InventorySystem : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+				"GameplayTags",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
