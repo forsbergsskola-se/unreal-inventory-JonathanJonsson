@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/GPAbilitySystemBase.h"
 #include "GameFramework/Character.h"
 #include "CharacterBase.generated.h"
 
@@ -14,12 +15,9 @@ class UEINTROASSIGN_API ACharacterBase : public ACharacter
 public:
 	// Sets default values for this character's properties
 	ACharacterBase();
-
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	UGPAbilitySystemBase* AbilitySystemComponent;
+ 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -28,4 +26,11 @@ public:
 
 	UFUNCTION(Server, Reliable, BlueprintCallable)
 	void ServerInteractCPP(AActor* HitActor, ACharacter* Interactor);
+
+	virtual void PossessedBy(AController* NewController) override;
+
+	
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 };
