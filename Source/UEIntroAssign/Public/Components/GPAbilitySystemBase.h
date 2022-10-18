@@ -19,9 +19,14 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
+	
+	UPROPERTY(EditDefaultsOnly)
+	TArray<TSubclassOf<UGameplayAbility>> GrantedAbilities;
 
-public:
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
-	                           FActorComponentTickFunction* ThisTickFunction) override;
+private:
+	bool GrantAbilities();
+	
+
+
+	
 };

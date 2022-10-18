@@ -5,6 +5,8 @@
 
 #include <string>
 
+#include "Net/UnrealNetwork.h"
+
 
 // Sets default values for this component's properties
 UInventoryBase::UInventoryBase()
@@ -12,6 +14,8 @@ UInventoryBase::UInventoryBase()
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
+
+	SetIsReplicatedByDefault(true);
 
 	// ...
 }
@@ -109,5 +113,12 @@ void UInventoryBase::Debug()
 		FString string = FString::Printf(TEXT("Item name: %s"), *ItemIndex.ItemPDA->ItemName.ToString());
 		PRINT(0,string);
 	}
+}
+
+void UInventoryBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(UInventoryBase, Items)
 }
 

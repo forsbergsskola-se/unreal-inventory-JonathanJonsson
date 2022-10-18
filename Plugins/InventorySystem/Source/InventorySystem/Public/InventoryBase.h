@@ -54,7 +54,13 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	UPROPERTY(Replicated)
 	TArray<FItemStruct> Items;
 
 	void Debug();
+	
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+	
+	
 };

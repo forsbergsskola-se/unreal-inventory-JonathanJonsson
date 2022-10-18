@@ -19,18 +19,45 @@ UGPAbilitySystemBase::UGPAbilitySystemBase()
 void UGPAbilitySystemBase::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// ...
 	
+	GrantAbilities();
 }
+ 
 
-
-// Called every frame
-void UGPAbilitySystemBase::TickComponent(float DeltaTime, ELevelTick TickType,
-                                         FActorComponentTickFunction* ThisTickFunction)
+bool UGPAbilitySystemBase::GrantAbilities()
 {
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+	if(GrantedAbilities.IsEmpty())
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 10,FColor::Red,
+		FString::Printf(TEXT("%s has no abilities!"), *GetOwner()->GetName()));
+		UE_LOG(LogTemp,Warning,TEXT("WARNING! Missing abilities!"));
+		
+		return false;
 
-	// ...
+	}
+	
+	for (const TSubclassOf<UGameplayAbility>& Ability : GrantedAbilities)
+	{
+		if(Ability == nullptr)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 10,FColor::Red,
+		FString::Printf(TEXT("%s has empty ability slot!"), *GetOwner()->GetName()));
+		}
+
+		checkf(Ability, TEXT("Missing ability in slot %s!"), *GetOwner()->GetName());
+
+		if(const FGameplayAbilitySpec* FoundSpec = FindAbilitySpecFromClass(Ability))
+		{
+				//If we already have ability, continue!
+        		if(FoundSpec->Ability->GetClass() == Ability)
+        			continue;	
+		}
+		
+		FGameplayAbilitySpec AbilitySpec(Ability);
+		GiveAbility(AbilitySpec);
+	}
+	
+	return true;
+		
 }
 
