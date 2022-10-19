@@ -21,6 +21,13 @@ void UGPAbilitySystemBase::BeginPlay()
 	Super::BeginPlay();
 	
 	GrantAbilities();
+
+	if(!GrantAttributes())
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1, 10, FColor::Red,
+			FString::Printf(TEXT("%s has no attributes"), *GetOwner()->GetName()));
+	}
 }
  
 
@@ -58,6 +65,23 @@ bool UGPAbilitySystemBase::GrantAbilities()
 	}
 	
 	return true;
-		
+}
+
+bool UGPAbilitySystemBase::GrantAttributes()
+{
+
+	if(GrantedAttribute.IsEmpty())
+		return false;
+
+	TArray<UAttributeSet*> AttributeSets;
+	
+	for (TSubclassOf<UAttributeSet> T : GrantedAttribute)
+	{
+		T.GetDefaultObject()->InitFromMetaDataTable(DTAttribute);
+		AttributeSets.AddUnique(T.GetDefaultObject());
+		AddAttributeSetSubobject(T.GetDefaultObject());
+
+	}
+	return true;
 }
 
