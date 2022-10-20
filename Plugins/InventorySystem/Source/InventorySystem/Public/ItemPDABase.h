@@ -18,11 +18,11 @@ public:
 	UPROPERTY(BlueprintReadOnly,EditDefaultsOnly, Category="Basic")
 	FText ItemName; 
 
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Basic")
-	float Damage;
-
-	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Basic")
-	FName SocketSlot;
+	// UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Basic")
+	// float Damage;
+	//
+	// UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Basic")
+	// FName SocketSlot;
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Basic")
 	UStaticMesh* Mesh;

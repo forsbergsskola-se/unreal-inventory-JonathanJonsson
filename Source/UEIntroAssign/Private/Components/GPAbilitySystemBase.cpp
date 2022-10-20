@@ -73,9 +73,8 @@ bool UGPAbilitySystemBase::GrantAttributes()
 	if(GrantedAttribute.IsEmpty())
 		return false;
 
-	TArray<UAttributeSet*> AttributeSets;
 	
-	for (auto T : GrantedAttribute)
+	for (TSubclassOf<UAttributeSet> T : GrantedAttribute)
 	{
 		const bool bHasAttributeSet = GetAttributeSubobject(T) != nullptr;
 		if(!bHasAttributeSet)
