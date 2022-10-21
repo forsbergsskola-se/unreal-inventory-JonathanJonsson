@@ -7,6 +7,8 @@
 #include "Attributes/GPAttributeBase.h"
 #include "GPAbilitySystemBase.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthAttributeChanged, FGameplayAttribute, Attribute, float, Value);
+
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class UEINTROASSIGN_API UGPAbilitySystemBase :  public UAbilitySystemComponent
@@ -16,6 +18,9 @@ class UEINTROASSIGN_API UGPAbilitySystemBase :  public UAbilitySystemComponent
 public:
 	// Sets default values for this component's properties
 	UGPAbilitySystemBase();
+	
+	UPROPERTY(BlueprintAssignable)
+	FOnHealthAttributeChanged OnHealthAttributeChanged;
 
 protected:
 	// Called when the game starts
@@ -26,17 +31,15 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly)
 	TArray<TSubclassOf<UAttributeSet>> GrantedAttribute;
-	// TSubclassOf<UGPAttributeBase> GrantedAttributes;
 
 	UPROPERTY(EditDefaultsOnly)
 	UDataTable* DTAttribute;
 	
 private:
 	bool GrantAbilities();
-
 	bool GrantAttributes();
-	
 
-
+ 
+	void OnHealthChanged(const FOnAttributeChangeData& Data);
 	
 };

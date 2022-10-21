@@ -5,10 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameplayTagContainer.h"
 #include "ItemPDABase.generated.h"
-
-/**
- * 
- */
+ 
 UCLASS()
 class INVENTORYSYSTEM_API UItemPDABase : public UPrimaryDataAsset
 {
@@ -17,12 +14,6 @@ class INVENTORYSYSTEM_API UItemPDABase : public UPrimaryDataAsset
 public:
 	UPROPERTY(BlueprintReadOnly,EditDefaultsOnly, Category="Basic")
 	FText ItemName; 
-
-	// UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Basic")
-	// float Damage;
-	//
-	// UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Basic")
-	// FName SocketSlot;
 
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Basic")
 	UStaticMesh* Mesh;

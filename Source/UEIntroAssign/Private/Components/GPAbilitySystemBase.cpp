@@ -28,6 +28,8 @@ void UGPAbilitySystemBase::BeginPlay()
 			-1, 10, FColor::Red,
 			FString::Printf(TEXT("%s has no attributes"), *GetOwner()->GetName()));
 	}
+
+	GetGameplayAttributeValueChangeDelegate(UGPAttributeBase::GetHealthAttribute()).AddUObject(this,&UGPAbilitySystemBase::OnHealthChanged);
 }
  
 
@@ -86,4 +88,11 @@ bool UGPAbilitySystemBase::GrantAttributes()
 	}
 	return true;
 }
+
+void UGPAbilitySystemBase::OnHealthChanged(const FOnAttributeChangeData& Data)
+{
+	OnHealthAttributeChanged.Broadcast(Data.Attribute, Data.NewValue);
+}
+ 
+ 
 
