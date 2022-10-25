@@ -86,6 +86,7 @@ bool UGPAbilitySystemBase::GrantAttributes()
 			AddAttributeSetSubobject(AttributeSet);
 		}
 	}
+	
 	return true;
 }
 
@@ -93,6 +94,3 @@ void UGPAbilitySystemBase::OnHealthChanged(const FOnAttributeChangeData& Data)
 {
 	OnHealthAttributeChanged.Broadcast(Data.Attribute, Data.NewValue);
 }
- 
- 
-
