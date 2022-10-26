@@ -11,7 +11,7 @@ void UAddAbilities::OnGameFeatureActivating(FGameFeatureActivatingContext& Conte
 
 	const int32 Entry=12;
 	const double CoolEntry  =56;
-	FWorldDelegates::OnStartGameInstance.AddUObject(this,&UAddAbilities::HandleGameInstanceStart, Entry, CoolEntry);
+	GameInstanceHandle = FWorldDelegates::OnStartGameInstance.AddUObject(this,&UAddAbilities::HandleGameInstanceStart, Entry, CoolEntry);
 }
 
 void UAddAbilities::OnGameFeatureDeactivating(FGameFeatureDeactivatingContext& Context)

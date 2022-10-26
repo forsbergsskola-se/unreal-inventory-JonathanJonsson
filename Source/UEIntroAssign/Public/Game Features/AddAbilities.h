@@ -35,6 +35,7 @@ protected:
 	FDelegateHandle GameInstanceHandle;
 	
 	virtual void OnGameFeatureActivating(FGameFeatureActivatingContext& Context) override;
-virtual void OnGameFeatureDeactivating(FGameFeatureDeactivatingContext& Context) override;
+	virtual void OnGameFeatureDeactivating(FGameFeatureDeactivatingContext& Context) override;
+	
 	void HandleGameInstanceStart(UGameInstance* GameInstance, int32 Entry, double CoolEntry);
 };
