@@ -3,15 +3,14 @@
 
 #include "Game Features/AddAbilities.h"
 
+#include "AbilitySystemComponent.h"
+#include "Components/GameFrameworkComponentManager.h"
 #include "GameFeaturesSubsystem.h"
 
 void UAddAbilities::OnGameFeatureActivating(FGameFeatureActivatingContext& Context)
 {
 	Super::OnGameFeatureActivating(Context);
-
-	const int32 Entry=12;
-	const double CoolEntry  =56;
-	GameInstanceHandle = FWorldDelegates::OnStartGameInstance.AddUObject(this,&UAddAbilities::HandleGameInstanceStart, Entry, CoolEntry);
+	GameInstanceHandle = FWorldDelegates::OnStartGameInstance.AddUObject(this,&UAddAbilities::HandleGameInstanceStart);
 }
 
 void UAddAbilities::OnGameFeatureDeactivating(FGameFeatureDeactivatingContext& Context)
@@ -20,7 +19,23 @@ void UAddAbilities::OnGameFeatureDeactivating(FGameFeatureDeactivatingContext& C
 	FWorldDelegates::OnStartGameInstance.Remove(GameInstanceHandle);
 }
 
-void UAddAbilities::HandleGameInstanceStart(UGameInstance* GameInstance, int32 Entry, double CoolEntry)
+void UAddAbilities::HandleGameInstanceStart(UGameInstance* GameInstance)
 {
-	UE_LOG(LogTemp,Warning,TEXT("Entry:%i	CoolEntry:%f"),Entry,CoolEntry);
+	UGameFrameworkComponentManager* ComponentManager = UGameInstance::GetSubsystem<UGameFrameworkComponentManager>(GameInstance);
+	int EntryIndex =0;
+
+	for (int i = 0; i < Abilities.Num(); i++)
+	{
+		FGameFeatureAbilityEntry AbilityEntry = Abilities[i];
+		const UGameFrameworkComponentManager::FExtensionHandlerDelegate ExtensionDelegate = UGameFrameworkComponentManager::FExtensionHandlerDelegate::CreateUObject(this, &UAddAbilities::HandleExtensionDelegate, EntryIndex);
+		ExtensionHandler.Add(ComponentManager->AddExtensionHandler(AbilityEntry.ActorClass, ExtensionDelegate));
+	}
+}
+
+void UAddAbilities::HandleExtensionDelegate(AActor* ActorClass, FName Name, int entryIndex)
+{
+	UAbilitySystemComponent* AbilitySystemComponent = ActorClass->FindComponentByClass<UAbilitySystemComponent>();
+	const TSubclassOf<UGameplayAbility> Ability =  Abilities[entryIndex].AbilityClass.LoadSynchronous();
+	const FGameplayAbilitySpec AbilitySpec{Ability};
+	AbilitySystemComponent->GiveAbility(AbilitySpec);
 }

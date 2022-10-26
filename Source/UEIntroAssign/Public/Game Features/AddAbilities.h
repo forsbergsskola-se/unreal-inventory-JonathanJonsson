@@ -6,6 +6,7 @@
 #include "GameFeatureAction.h"
 #include "GameFeaturesSubsystem.h"
 #include "Abilities/GameplayAbility.h"
+#include "Components/GameFrameworkComponentManager.h"
 #include "AddAbilities.generated.h"
 
 
@@ -29,7 +30,7 @@ class UEINTROASSIGN_API UAddAbilities : public UGameFeatureAction
 	GENERATED_BODY()
 
 protected:
-	
+	TArray<TSharedPtr<FComponentRequestHandle>> ExtensionHandler;
 	UPROPERTY(EditAnywhere)
 	TArray<FGameFeatureAbilityEntry> Abilities;
 	FDelegateHandle GameInstanceHandle;
@@ -37,5 +38,7 @@ protected:
 	virtual void OnGameFeatureActivating(FGameFeatureActivatingContext& Context) override;
 	virtual void OnGameFeatureDeactivating(FGameFeatureDeactivatingContext& Context) override;
 	
-	void HandleGameInstanceStart(UGameInstance* GameInstance, int32 Entry, double CoolEntry);
+	void HandleGameInstanceStart(UGameInstance* GameInstance);
+
+	void HandleExtensionDelegate(AActor* ActorClass, FName Name, int EntryIndex);
 };
