@@ -17,7 +17,8 @@ public class UEIntroAssign : ModuleRules
 			"NavigationSystem",
 			"InventorySystem",
 			"GameFeatures",
-			"ModularGameplay"
+			"ModularGameplay",
+			"EnhancedInput"
 			
 		});
 
