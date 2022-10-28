@@ -20,17 +20,16 @@ void UAddMappingContext::HandleGameInstanceStart(UGameInstance* GameInstance)
 	{
 		FGameFeatureMappingEntry MappingEntry = MappingEntries[i];
 		const auto ExtensionHandle = UGameFrameworkComponentManager::FExtensionHandlerDelegate::CreateUObject(this, &UAddMappingContext::HandleExtensionDelegate, i);
-		ExtensionHandlers.Add(ComponentManager->AddExtensionHandler(MappingEntry.ControllerClass,ExtensionHandle));
+		ExtensionHandlers.Add(ComponentManager->AddExtensionHandler(MappingEntry.CharacterClass,ExtensionHandle));
 	}
 }
 
 void UAddMappingContext::HandleExtensionDelegate(AActor* ActorClass, FName Name, int EntryIndex)
 {
-	const APlayerController* PlayerController = Cast<APlayerController>(ActorClass);
-	UEnhancedInputLocalPlayerSubsystem* InputSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(
+	const ACharacter* PlayerCharacter = Cast<ACharacter>(ActorClass);
+	const APlayerController* PlayerController = Cast<APlayerController>(PlayerCharacter->Controller);
+	const auto InputSubsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(
 		PlayerController->GetLocalPlayer());
 
 	InputSubsystem->AddMappingContext(MappingEntries[EntryIndex].MappingContext, 0);
-
-	
 }

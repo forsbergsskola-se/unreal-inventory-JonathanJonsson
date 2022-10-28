@@ -6,6 +6,7 @@
 #include "GameFeatureAction.h"
 #include "InputMappingContext.h"
 #include "Components/GameFrameworkComponentManager.h"
+#include "GameFramework/Character.h"
 #include "AddMappingContext.generated.h"
 
 USTRUCT()
@@ -14,7 +15,7 @@ struct FGameFeatureMappingEntry
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere)
-	TSoftClassPtr<APlayerController> ControllerClass;
+	TSoftClassPtr<ACharacter> CharacterClass = ACharacter::StaticClass();
 
 	UInputMappingContext* MappingContext;
 	
