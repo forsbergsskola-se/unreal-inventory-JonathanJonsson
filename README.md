@@ -1,3 +1,3 @@
-# unreal-inventory-JonathanJonsson
+# UNreal-assignments-JonathanJonsson
 unreal-inventory-JonathanJonsson created by GitHub Classroom
-+ AI + EQS for enemies
+
